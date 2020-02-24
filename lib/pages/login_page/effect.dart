@@ -4,8 +4,8 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../global_state/action.dart';
-import '../global_state/store.dart';
+import '../../global_state/action.dart';
+import '../../global_state/store.dart';
 
 import 'action.dart';
 import 'state.dart';

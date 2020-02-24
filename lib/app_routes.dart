@@ -1,15 +1,17 @@
-// Чтобы не хардкодить везде стринги, сделаем класс-хелпер с константами
 import 'package:fish_redux/fish_redux.dart';
 
 import 'global_state/state.dart';
 import 'global_state/store.dart';
 
-import 'sample_page/page.dart';
-import 'login_page/page.dart';
+import 'pages/sample_page/page.dart';
+import 'pages/login_page/page.dart';
+import 'pages/main_page/page.dart';
 
+// Чтобы не хардкодить везде стринги, сделаем класс-хелпер с константами
 class AppPageName {
   static const sample = 'sample';
   static const login = 'login';
+  static const main = 'main';
 }
 
 // Объявляем и создаём возможные страницы в приложении, матчим с названиями
@@ -17,6 +19,7 @@ final pageRoutes = PageRoutes(
   pages: {
     AppPageName.sample: SamplePage(),
     AppPageName.login: LoginPage(),
+    AppPageName.main: MainPage(),
   },
   visitor: (String path, Page<Object, dynamic> page) {
     if (page.isTypeof<GlobalBaseState>()) {

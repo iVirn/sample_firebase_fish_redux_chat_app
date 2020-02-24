@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../global_state/state.dart';
+import '../../global_state/state.dart';
 
 class LoginState implements GlobalBaseState<LoginState> {
   @override
