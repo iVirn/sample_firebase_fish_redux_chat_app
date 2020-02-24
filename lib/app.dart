@@ -10,5 +10,9 @@ class App extends StatelessWidget {
         ),
         // Создаём страницу с нужным именем, исходя из объявленной ниже Map
         home: pageRoutes.buildPage(AppPageName.login, null),
+        onGenerateRoute: (RouteSettings settings) => MaterialPageRoute<Object>(
+          builder: (BuildContext context) =>
+              pageRoutes.buildPage(settings.name, settings.arguments),
+        ),
       );
 }

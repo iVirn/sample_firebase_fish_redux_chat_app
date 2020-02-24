@@ -1,18 +1,19 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fish_redux/fish_redux.dart';
+
+import '../../models/user.dart';
 
 enum MainAction {
   onFetchUsers,
-  setUsers,
+  setPeers,
   onOpenChat,
 }
 
 class MainActionCreator {
   static Action onFetchUsers() => const Action(MainAction.onFetchUsers);
 
-  static Action setUsers(List<FirebaseUser> users) =>
-      Action(MainAction.setUsers, payload: users);
+  static Action setPeers(List<Peer> users) =>
+      Action(MainAction.setPeers, payload: users);
 
-  static Action onOpenChat(FirebaseUser user) =>
-      Action(MainAction.onOpenChat, payload: user);
+  static Action onOpenChat(Peer peer) =>
+      Action(MainAction.onOpenChat, payload: peer);
 }

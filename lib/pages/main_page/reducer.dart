@@ -5,8 +5,9 @@ import 'state.dart';
 
 Reducer<MainState> buildReducer() => asReducer(
       <Object, Reducer<MainState>>{
-        MainAction.setUsers: _setUsers,
+        MainAction.setPeers: _setPeers,
       },
     );
 
-MainState _setUsers(MainState state, Action action) => state.clone();
+MainState _setPeers(MainState state, Action action) =>
+    state.clone()..peers = List.from(action.payload);

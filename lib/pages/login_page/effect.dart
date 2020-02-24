@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fish_redux/fish_redux.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart' hide Action;
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../app_routes.dart';
 import '../../global_state/action.dart';
 import '../../global_state/store.dart';
 
@@ -13,6 +15,7 @@ import 'state.dart';
 Effect<LoginState> buildEffect() => combineEffects(<Object, Effect<LoginState>>{
       LoginAction.onLogin: _onLogin,
       LoginAction.onProcessUser: _onProcessUser,
+      LoginAction.onPushMainPage: _onPushMainPage,
     });
 
 void _onLogin(Action action, Context<LoginState> ctx) async {
@@ -56,7 +59,14 @@ void _onProcessUser(Action action, Context<LoginState> ctx) async {
       'photoUrl': user.photoUrl,
       'id': user.uid,
     };
+
     // Обновляем данные у себя в БД
     Firestore.instance.collection('users').document(user.uid).setData(userData);
   }
+
+  // Переходим на главный экран с чатами
+  ctx.dispatch((LoginActionCreator.onPushMainPage()));
 }
+
+void _onPushMainPage(Action action, Context<LoginState> ctx) =>
+    Navigator.of(ctx.context).pushNamed(AppPageName.main);

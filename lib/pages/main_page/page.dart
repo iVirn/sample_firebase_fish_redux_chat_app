@@ -8,15 +8,18 @@ import 'view.dart';
 class MainPage extends Page<MainState, Map<String, dynamic>> {
   MainPage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<MainState>(
-                adapter: null,
-                slots: <String, Dependent<MainState>>{
-                }),
-            middleware: <Middleware<MainState>>[
-            ],);
-
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<MainState>(
+            adapter: null,
+            slots: <String, Dependent<MainState>>{},
+          ),
+          middleware: <Middleware<MainState>>[],
+          shouldUpdate: _shouldUpdate,
+        );
 }
+
+bool _shouldUpdate(MainState oldState, MainState newState) =>
+    oldState.peers != newState.peers;

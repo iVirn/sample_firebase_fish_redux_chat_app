@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 enum LoginAction {
   onLogin,
   onProcessUser,
+  onPushMainPage,
 }
 
 class LoginActionCreator {
@@ -12,4 +13,6 @@ class LoginActionCreator {
 
   static Action onProcessUser(FirebaseUser user) =>
       Action(LoginAction.onProcessUser, payload: user);
+
+  static Action onPushMainPage() => const Action(LoginAction.onPushMainPage);
 }
