@@ -84,11 +84,12 @@ Widget _bubble({
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: isIncome ? Colors.black26 : Colors.blue,
+            color: isIncome ? Colors.black12 : Colors.blue,
           ),
           child: Text(
             text,
-            style: TextStyle(fontSize: 14, color: Colors.black38),
+            style: TextStyle(
+                fontSize: 14, color: isIncome ? Colors.black : Colors.white),
             maxLines: maxLines,
             overflow: maxLines != null
                 ? TextOverflow.ellipsis

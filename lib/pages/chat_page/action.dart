@@ -1,10 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum ChatAction { action }
+import '../../models/message.dart';
+
+enum ChatAction { setMessages, onSendMessage }
 
 class ChatActionCreator {
-  static Action onAction() {
-    return const Action(ChatAction.action);
-  }
+  static Action setMessages(List<Message> messages) =>
+      Action(ChatAction.setMessages, payload: messages);
+
+  static Action onSendMessage(String text) =>
+      Action(ChatAction.onSendMessage, payload: text);
 }

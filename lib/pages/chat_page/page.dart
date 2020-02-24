@@ -8,15 +8,14 @@ import 'view.dart';
 class ChatPage extends Page<ChatState, Map<String, dynamic>> {
   ChatPage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<ChatState>(
-                adapter: null,
-                slots: <String, Dependent<ChatState>>{
-                }),
-            middleware: <Middleware<ChatState>>[
-            ],);
-
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<ChatState>(
+            adapter: null,
+            slots: <String, Dependent<ChatState>>{},
+          ),
+          middleware: <Middleware<ChatState>>[],
+        );
 }

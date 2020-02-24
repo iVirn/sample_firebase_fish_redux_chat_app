@@ -42,5 +42,6 @@ void _onOpenChat(Action action, Context<MainState> ctx) {
   final peer = action.payload as Peer;
   print(peer?.nickname);
 
-  Navigator.of(ctx.context).pushNamed(AppPageName.chat);
+  Navigator.of(ctx.context)
+      .pushNamed(AppPageName.chat, arguments: {'peer': peer});
 }

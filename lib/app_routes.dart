@@ -32,8 +32,7 @@ final pageRoutes = PageRoutes(
           final GlobalBaseState p = pagestate;
           if (p.user != appState.user) {
             if (pagestate is Cloneable) {
-              final Object copy = pagestate.clone();
-              final GlobalBaseState newState = copy;
+              final GlobalBaseState newState = pagestate.clone();
               newState.user = appState.user;
               return newState;
             }

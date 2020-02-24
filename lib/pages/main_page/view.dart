@@ -27,7 +27,8 @@ Widget buildView(
         itemCount: state.peers.length,
         itemBuilder: (context, index) => PeerItem(
           state.peers[index],
-          onTap: () => dispatch(MainActionCreator.onOpenChat(null)),
+          onTap: () =>
+              dispatch(MainActionCreator.onOpenChat(state.peers[index])),
         ),
       ),
     );

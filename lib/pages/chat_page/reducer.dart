@@ -3,15 +3,11 @@ import 'package:fish_redux/fish_redux.dart';
 import 'action.dart';
 import 'state.dart';
 
-Reducer<ChatState> buildReducer() {
-  return asReducer(
-    <Object, Reducer<ChatState>>{
-      ChatAction.action: _onAction,
-    },
-  );
-}
+Reducer<ChatState> buildReducer() => asReducer(
+      <Object, Reducer<ChatState>>{
+        ChatAction.setMessages: _setMessages,
+      },
+    );
 
-ChatState _onAction(ChatState state, Action action) {
-  final ChatState newState = state.clone();
-  return newState;
-}
+ChatState _setMessages(ChatState state, Action action) =>
+    state.clone()..messages = List.from(action.payload);

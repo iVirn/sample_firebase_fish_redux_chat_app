@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'ui/message_item.dart';
 
+import 'action.dart';
 import 'state.dart';
 
 Widget buildView(
@@ -12,7 +13,7 @@ Widget buildView(
 ) {
   return Scaffold(
     appBar: AppBar(
-      title: Text('ss'),
+      title: Text(state.peer.nickname),
     ),
     body: SafeArea(
       child: GestureDetector(
@@ -20,28 +21,28 @@ Widget buildView(
         child: Column(
           children: <Widget>[
             Expanded(
-              child: ListView(
+              child: ListView.builder(
                 reverse: true,
                 padding: const EdgeInsets.only(bottom: 24),
-                children: []
-                    .map(
-                      (message) => Container(
-                        margin: const EdgeInsets.only(
-                          left: 16,
-                          right: 16,
-                        ),
-                        child: MessageItem(
-                          '',
-                        ),
-                      ),
-                    )
-                    .toList(),
+                itemCount: state.messages.length,
+                itemBuilder: (context, index) => Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                    top: 8,
+                  ),
+                  child: MessageItem(state.messages[index].text,
+                      isIncome: state.messages[index].idFrom != state.user.uid),
+                ),
               ),
             ),
             Container(
               height: 60,
               width: MediaQuery.of(viewService.context).size.width,
-              child: ChatTextField(),
+              child: ChatTextField(
+                onSendMessage: (text) =>
+                    dispatch(ChatActionCreator.onSendMessage(text)),
+              ),
             ),
           ],
         ),
@@ -55,7 +56,7 @@ class ChatTextField extends StatefulWidget {
   final Function(String) onSendMessage;
 
   const ChatTextField({
-    this.onSendMessage,
+    @required this.onSendMessage,
     Key key,
   }) : super(key: key);
 
@@ -107,8 +108,10 @@ class _ChatTextFieldState extends State<ChatTextField> {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: IconButton(
                 icon: Icon(Icons.send),
-                onPressed: () =>
-                    widget.onSendMessage(_textEditingController.text),
+                onPressed: () {
+                  widget.onSendMessage(_textEditingController.text);
+                  _textEditingController.clear();
+                },
                 color: Colors.blue,
               ),
             ),
