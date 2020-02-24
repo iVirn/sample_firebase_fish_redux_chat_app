@@ -9,6 +9,6 @@ class App extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // Создаём страницу с нужным именем, исходя из объявленной ниже Map
-        home: pageRoutes.buildPage(AppPageName.sample, null),
+        home: pageRoutes.buildPage(AppPageName.login, null),
       );
 }

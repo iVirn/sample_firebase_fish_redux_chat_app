@@ -5,15 +5,18 @@ import 'global_state/state.dart';
 import 'global_state/store.dart';
 
 import 'sample_page/page.dart';
+import 'login_page/page.dart';
 
 class AppPageName {
   static const sample = 'sample';
+  static const login = 'login';
 }
 
 // Объявляем и создаём возможные страницы в приложении, матчим с названиями
 final pageRoutes = PageRoutes(
   pages: {
     AppPageName.sample: SamplePage(),
+    AppPageName.login: LoginPage(),
   },
   visitor: (String path, Page<Object, dynamic> page) {
     if (page.isTypeof<GlobalBaseState>()) {
