@@ -1,7 +1,4 @@
-import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/material.dart';
-
-import 'sample_page/page.dart';
+import 'package:flutter/material.dart' hide Action;
 
 import 'app_routes.dart';
 
@@ -15,10 +12,3 @@ class App extends StatelessWidget {
         home: pageRoutes.buildPage(AppPageName.sample, null),
       );
 }
-
-// Объявляем и создаём возможные страницы в приложении, матчим с названиями
-final pageRoutes = PageRoutes(
-  pages: {
-    AppPageName.sample: SamplePage(),
-  },
-);
