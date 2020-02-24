@@ -11,10 +11,12 @@ class App extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        // Создаём страницу с нужным именем, исходя из объявленной ниже Map
         home: pageRoutes.buildPage(AppPageName.sample, null),
       );
 }
 
+// Объявляем и создаём возможные страницы в приложении, матчим с названиями
 final pageRoutes = PageRoutes(
   pages: {
     AppPageName.sample: SamplePage(),
