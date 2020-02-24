@@ -31,8 +31,10 @@ void _onFetchData(Action action, Context<SampleState> ctx) async {
   // Получаем данные из файрбейза, делаем подписку
   final snapshots = Firestore.instance.collection('sample').snapshots();
   _subscription = snapshots.listen((event) {
-    final name = event.documents.first['name'];
-    // На каждый новый ивент диспатчим экшен setData с обновлёнными данными из ивента
-    ctx.dispatch(SampleActionCreator.setData(name));
+    if (event.documents.isNotEmpty) {
+      final name = event.documents.first['name'];
+      // На каждый новый ивент диспатчим экшен setData с обновлёнными данными из ивента
+      ctx.dispatch(SampleActionCreator.setData(name));
+    }
   });
 }
