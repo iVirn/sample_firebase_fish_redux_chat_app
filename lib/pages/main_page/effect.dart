@@ -4,6 +4,9 @@ import 'package:fish_redux/fish_redux.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:flutter/widgets.dart' hide Action;
+
+import '../../app_routes.dart';
 import '../../models/user.dart';
 
 import 'action.dart';
@@ -36,5 +39,8 @@ void _onFetchUsers(Action action, Context<MainState> ctx) {
 }
 
 void _onOpenChat(Action action, Context<MainState> ctx) {
-  //
+  final peer = action.payload as Peer;
+  print(peer?.nickname);
+
+  Navigator.of(ctx.context).pushNamed(AppPageName.chat);
 }

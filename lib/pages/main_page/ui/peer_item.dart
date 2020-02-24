@@ -15,7 +15,7 @@ class PeerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(

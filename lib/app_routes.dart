@@ -6,12 +6,14 @@ import 'global_state/store.dart';
 import 'pages/sample_page/page.dart';
 import 'pages/login_page/page.dart';
 import 'pages/main_page/page.dart';
+import 'pages/chat_page/page.dart';
 
 // Чтобы не хардкодить везде стринги, сделаем класс-хелпер с константами
 class AppPageName {
   static const sample = 'sample';
   static const login = 'login';
   static const main = 'main';
+  static const chat = 'chat';
 }
 
 // Объявляем и создаём возможные страницы в приложении, матчим с названиями
@@ -20,6 +22,7 @@ final pageRoutes = PageRoutes(
     AppPageName.sample: SamplePage(),
     AppPageName.login: LoginPage(),
     AppPageName.main: MainPage(),
+    AppPageName.chat: ChatPage(),
   },
   visitor: (String path, Page<Object, dynamic> page) {
     if (page.isTypeof<GlobalBaseState>()) {

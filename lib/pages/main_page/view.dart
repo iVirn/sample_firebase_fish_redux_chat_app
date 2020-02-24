@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'ui/peer_item.dart';
 
+import 'action.dart';
 import 'state.dart';
 
 Widget buildView(
@@ -26,7 +27,7 @@ Widget buildView(
         itemCount: state.peers.length,
         itemBuilder: (context, index) => PeerItem(
           state.peers[index],
-          onTap: () {},
+          onTap: () => dispatch(MainActionCreator.onOpenChat(null)),
         ),
       ),
     );
