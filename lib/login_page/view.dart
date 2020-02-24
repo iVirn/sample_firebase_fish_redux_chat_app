@@ -14,11 +14,21 @@ Widget buildView(
       title: Text('Login'),
     ),
     body: Center(
-      child: RaisedButton(
-        color: Colors.blue,
-        textColor: Colors.white,
-        child: Text('Sign In with Google'),
-        onPressed: () => dispatch(LoginActionCreator.onLogin()),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            state.user != null
+                ? state.user.displayName
+                : 'You are not logged in',
+          ),
+          RaisedButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            child: Text('Sign In with Google'),
+            onPressed: () => dispatch(LoginActionCreator.onLogin()),
+          ),
+        ],
       ),
     ),
   );
