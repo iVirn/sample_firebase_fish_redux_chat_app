@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
-import 'sample_page/page.dart';
+import 'pages/sample_page/page.dart';
 
 import 'app_routes.dart';
 
