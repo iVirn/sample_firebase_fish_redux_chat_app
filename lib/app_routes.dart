@@ -4,7 +4,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'global_state/state.dart';
 import 'global_state/store.dart';
 
-import 'sample_page/page.dart';
+import 'pages/sample_page/page.dart';
 
 class AppPageName {
   static const sample = 'sample';
